@@ -27,6 +27,37 @@ public class ChatBotUcbManagedBeam {
 	public ChatBotUcbManagedBeam(){
 		getInteracoes().add(new InteracaoChat(false, "Olá, eu sou uma Assistente virtual da UCB, em que posso lhe ajudar?"));
 	}
+	
+	public String getUserInput() {
+		System.out.println("--- get user input ----");
+		return userInput;
+	}
+
+	public void setUserInput(String userInput) {
+		System.out.println("---- set user input ---- ");
+
+		this.userInput = userInput;
+	}
+
+	public String getBotOutput() {
+		System.out.println(" ---- get bot output --- ");
+
+		return botOutput;
+	}
+
+	public void setBotOutput(String botOutput) {
+		System.out.println("--- set bot output ---");
+
+		this.botOutput = botOutput;
+	}
+
+	public List<InteracaoChat> getInteracoes() {
+		return interacoes;
+	}
+
+	public void setInteracoes(List<InteracaoChat> interacoes) {
+		this.interacoes = interacoes;
+	}
 	/**
 	 * Ira receber a pergunta do usuario, enviara para o watson e retornara uma resposta
 	 * @return
@@ -41,36 +72,5 @@ public class ChatBotUcbManagedBeam {
 		System.out.println(getInteracoes().toString());
 		return "";
 	}
-	public String getUserInput() {
-		System.out.println("get user input");
-		return userInput;
-	}
-
-	public void setUserInput(String userInput) {
-		System.out.println("set user input");
-
-		this.userInput = userInput;
-	}
-
-	public String getBotOutput() {
-		System.out.println("get bot output");
-
-		return botOutput;
-	}
-
-	public void setBotOutput(String botOutput) {
-		System.out.println("set bot output");
-
-		this.botOutput = botOutput;
-	}
-
-	public List<InteracaoChat> getInteracoes() {
-		return interacoes;
-	}
-
-	public void setInteracoes(List<InteracaoChat> interacoes) {
-		this.interacoes = interacoes;
-	}
-	
 	
 }

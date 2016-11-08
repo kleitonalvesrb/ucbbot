@@ -26,6 +26,7 @@ public class RealizaPerguntBot {
 		MessageRequest newMessage = new MessageRequest.Builder().inputText(pergunta).build();
 		String workspaceId = ConstantesWatson.WORKSPACE_ID_CONVERSATION;
 		MessageResponse response = service.message(workspaceId, newMessage).execute();
+		System.out.println(">>>>>>>"+response+"<<<<<");
 		return new TrataRespostaJson().trataResponstaJson(response.toString());
 	}
 }
