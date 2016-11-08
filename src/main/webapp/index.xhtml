@@ -85,7 +85,7 @@
 				</ul>
 			</div>
 			<div class="bottom_wrapper clearfix">
-				<h:commandButton value="Enviar" action="#{chat.submint()}"
+				<h:commandButton value="Enviar" action="#{chat.submit()}"
 					styleClass="send_message icon text" onclick="prepareSendMessage()">
 					<f:ajax execute="input" render="dialogo" onevent="sentMessage" />
 				</h:commandButton>

@@ -31,7 +31,7 @@ public class ChatBotUcbManagedBeam {
 	 * Ira receber a pergunta do usuario, enviara para o watson e retornara uma resposta
 	 * @return
 	 */
-	public String submint(){
+	public String submit(){
 		System.out.println("====submit======");
 
 		getInteracoes().add(new InteracaoChat(true, userInput));
@@ -42,18 +42,25 @@ public class ChatBotUcbManagedBeam {
 		return "";
 	}
 	public String getUserInput() {
+		System.out.println("get user input");
 		return userInput;
 	}
 
 	public void setUserInput(String userInput) {
+		System.out.println("set user input");
+
 		this.userInput = userInput;
 	}
 
 	public String getBotOutput() {
+		System.out.println("get bot output");
+
 		return botOutput;
 	}
 
 	public void setBotOutput(String botOutput) {
+		System.out.println("set bot output");
+
 		this.botOutput = botOutput;
 	}
 
