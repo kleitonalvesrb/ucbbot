@@ -1,3 +1,5 @@
 br.ucb.chatbot.beam
+br.ucb.chatbot.constantes
+br.ucb.chatbot.conversation
 br.ucb.chatbot.managedbeam
 wasdev.sample.servlet

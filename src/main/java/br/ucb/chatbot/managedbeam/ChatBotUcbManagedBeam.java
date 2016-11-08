@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import br.ucb.chatbot.beam.InteracaoChat;
+import br.ucb.chatbot.conversation.RealizaPerguntBot;
 
 /**
  * 
@@ -26,10 +27,14 @@ public class ChatBotUcbManagedBeam {
 	public ChatBotUcbManagedBeam(){
 		getInteracoes().add(new InteracaoChat(false, "Olá, eu sou uma Assistente virtual da UCB, em que posso lhe ajudar?"));
 	}
-
+	/**
+	 * Ira receber a pergunta do usuario, enviara para o watson e retornara uma resposta
+	 * @return
+	 */
 	public String submint(){
 		getInteracoes().add(new InteracaoChat(true, userInput));
-		
+		setBotOutput(new RealizaPerguntBot().realizaPergunta(userInput));
+		getInteracoes().add(new InteracaoChat(false, getBotOutput()));
 		return "";
 	}
 	public String getUserInput() {
