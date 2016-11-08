@@ -63,7 +63,7 @@
 				<ul class="messages">
 						<h:panelGroup id="dialogo">
 							<ui:repeat var="conversa" value="#{chat.interacoes}">
-								<h:panelGroup rendered="#{conversa.usuarioInteracao == 1}">
+								<h:panelGroup rendered="#{conversa.usuarioInteracao == true}">
 									<li class="message right appeared">
 										<div class="avatar"></div>
 										<div class="text_wrapper">
@@ -71,7 +71,7 @@
 										</div>
 									</li>
 								</h:panelGroup>
-								<h:panelGroup rendered="#{conversa.usuarioInteracao == 0}">
+								<h:panelGroup rendered="#{!conversa.usuarioInteracao}">
 									<li class="message left appeared">
 										<div class="avatar"></div>
 										<div class="text_wrapper">
