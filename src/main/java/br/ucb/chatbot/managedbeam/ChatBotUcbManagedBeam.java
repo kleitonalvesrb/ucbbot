@@ -32,11 +32,13 @@ public class ChatBotUcbManagedBeam {
 	 * @return
 	 */
 	public String submint(){
+		System.out.println("====submit======");
+
 		getInteracoes().add(new InteracaoChat(true, userInput));
 		setBotOutput(new RealizaPerguntBot().realizaPergunta(userInput));
 		getInteracoes().add(new InteracaoChat(false, getBotOutput()));
 		System.out.println("==============");
-		System.out.println(getInteracoes());
+		System.out.println(getInteracoes().toString());
 		return "";
 	}
 	public String getUserInput() {
