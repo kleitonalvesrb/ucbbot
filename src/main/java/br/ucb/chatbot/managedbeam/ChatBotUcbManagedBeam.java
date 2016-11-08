@@ -35,6 +35,8 @@ public class ChatBotUcbManagedBeam {
 		getInteracoes().add(new InteracaoChat(true, userInput));
 		setBotOutput(new RealizaPerguntBot().realizaPergunta(userInput));
 		getInteracoes().add(new InteracaoChat(false, getBotOutput()));
+		System.out.println("==============");
+		System.out.println(getInteracoes());
 		return "";
 	}
 	public String getUserInput() {
