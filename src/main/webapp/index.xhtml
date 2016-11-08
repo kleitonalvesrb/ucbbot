@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>	
+	
+	<script src="default.js"></script>
+
+	
+	<script>
+		if( /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+			document.write('<link rel="stylesheet" type="text/css" href="cssMob.css"></link>');
+		}else{
+			document.write('<link rel="stylesheet" type="text/css" href="css.css"></link>');
+		}
+		
+    </script>
+	
+</h:head>
+
+<h:body>
+
+	
+	<div id="anaMinimized" class="anaMinimized" onclick="maximizeAna();">
+		<img src="images/anac_lady.png" class="ana"></img>
+		<div class="helpAna">Está precisando de ajuda?</div>
+		<div class="maxmobile">^</div>
+		<div class="nomeAna"><span>Ana Clara</span><br>Assistente</br>Virtual</div>
+	</div>
+	
+	
+	<h:form id="form">
+		<div class="chat_window">
+			<div class="top_menu">
+			
+				<div class="iconsChatWindowDrag">
+					<img src="images/dragable.png" class="icon_dragable"></img>
+				</div>
+			
+				<div class="title">
+					<font style="color: #2c67cd;">ANAC</font>lara
+				</div>
+				
+				<div class="iconsChatWindowControl">
+					<img src="images/close.png" onclick="closeAna();"></img>
+					<img src="images/minimize.png" onclick="minimizeAna();"></img>
+				</div>
+			
+				
+			</div>
+			<div class="anaBig">
+				<img src="images/anac_lady.png"></img>
+			</div>
+			<div id="perguntaResposta">
+				<ul class="messages">
+						<h:panelGroup id="dialogo">
+							<ui:repeat var="conversa" value="#{chat.conversas}">
+								<h:panelGroup rendered="#{conversa.usuario == 1}">
+									<li class="message right appeared">
+										<div class="avatar"></div>
+										<div class="text_wrapper">
+											<h:outputText value="#{conversa.intereacaoFala}" />
+										</div>
+									</li>
+								</h:panelGroup>
+								<h:panelGroup rendered="#{conversa.usuario == 2}">
+									<li class="message left appeared">
+										<div class="avatar"></div>
+										<div class="text_wrapper">
+											<h:outputText value="#{conversa.intereacaoFala}" />
+										</div>
+									</li>
+
+								</h:panelGroup>
+							</ui:repeat>
+						</h:panelGroup>
+				</ul>
+			</div>
+			<div class="bottom_wrapper clearfix">
+				<h:commandButton value="Enviar" action="#{chat.submit}"
+					styleClass="send_message icon text" onclick="prepareSendMessage()">
+					<f:ajax execute="input" render="dialogo" onevent="sentMessage" />
+				</h:commandButton>
+				
+				<h:inputText class="message_input inputShowed"
+						id="input2"
+						onkeyup="transferInputData()"/>
+				
+				<h:inputText class="message_input inputHidden" value="#{chat.userInput}" id="input" />
+					
+			</div>
+			
+		</div>
+		<div class="message_template">
+			<li class="message"><div class="avatar"></div>
+				<div class="text_wrapper">
+					<div class="text">
+						<h:outputText value="#{chat.userInput}" style="" />
+						<h:outputText value="#{chat.resposta}" />
+						<br />
+					</div>
+				</div></li>
+		</div>
+	</h:form>
+</h:body>
+
+
+</html>

@@ -1,0 +1,370 @@
+
+*{
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  margin: 0;
+  padding: 0;
+}
+input {
+	font-size: 16px !important;
+}
+  
+body {
+  background-color: #edeff2;
+  font-family: "Calibri", "Roboto", sans-serif;
+  width: 100%;
+  height: 100%;
+}
+
+.chat_window {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  border-radius: 10px !important;
+  background-color: #fff;
+  left: 25px;
+  top: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+}
+
+.top_menu {
+  background-color: #f8f8f8;
+  width: 100%;
+  padding: 20px 0 15px;
+  box-shadow: 0 1px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.top_menu .buttons {
+  margin: 3px 0 0 20px;
+  position: absolute;
+}
+.top_menu .buttons .button {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+  position: relative;
+}
+.top_menu .buttons .button.close {
+  background-color: #f5886e;
+}
+.top_menu .buttons .button.minimize {
+  background-color: #fdbf68;
+}
+.top_menu .buttons .button.maximize {
+  background-color: #a3d063;
+}
+.top_menu .title {
+  text-align: center;
+  color: #bcbdc0;
+  font-size: 20px;
+}
+
+#dialogo{
+  position: relative;
+  list-style: none;
+  padding: 20px 10px 0 10px;
+  margin: 0;
+  height: auto;
+  overflow-y: auto;
+}
+.messages {
+  position: relative;
+  list-style: none;
+  padding: 20px 10px 0 10px;
+  margin: 0;
+  height: 280px;
+  overflow-y: auto;
+}
+.messages .message {
+  clear: both;
+  overflow: hidden;
+  margin-bottom: 15px;
+  transition: all 0.5s linear;
+  opacity: 0;
+}
+.messages .message.left .avatar {
+  background-color: #f5eee5;
+  float: left;
+  background-image: url(https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-48.png);
+}
+.messages .message.left .text_wrapper {
+  background-color: #ffe6cb;
+  margin-left: 10px;
+}
+.messages .message.left .text_wrapper::after, .messages .message.left .text_wrapper::before {
+  right: 100%;
+  border-right-color: #ffe6cb;
+}
+.messages .message.left .text {
+  color: #c48843;
+}
+.messages .message.right .avatar {
+  background-color: #fdbf68;
+  float: right;
+  background-image: url(images/anaface.png);
+}
+.messages .message.right .text_wrapper {
+  background-color: #c7eafc;
+  margin-right: 10px;
+  float: right;
+}
+.messages .message.right .text_wrapper::after, .messages .message.right .text_wrapper::before {
+  left: 100%;
+  border-left-color: #c7eafc;
+}
+.messages .message.right .text {
+  color: #45829b;
+}
+.messages .message.appeared {
+  opacity: 1;
+}
+.messages .message .avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.messages .message .text_wrapper {
+  display: inline-block;
+  padding: 10px;
+  border-radius: 6px;
+  width: calc(100% - 65px);
+  min-width: 100px;
+  position: relative;
+}
+
+.text_wrapper{
+  font-size: 16px !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.bottom_wrapper {
+  position: relative;
+  width: 100%;
+  background-color: #fff;
+  padding: 20px 20px;
+  position: absolute;
+  bottom: 0;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top: 1px solid #ccc;
+}
+.bottom_wrapper .message_input_wrapper {
+  display: inline-block;
+  height: 50px;
+  border-radius: 25px;
+  border: 1px solid #bcbdc0;
+  width: calc(100% - 160px);
+  position: relative;
+  padding: 0 20px;
+}
+.bottom_wrapper .message_input_wrapper .message_input {
+  border: none;
+  height: 100%;
+  box-sizing: border-box;
+  width: calc(100% - 40px);
+  position: absolute;
+  outline-width: 0;
+  color: gray;
+}
+
+
+.message_template {
+  display: none;
+}
+
+.inputHidden{
+	display: none !important;
+}
+
+
+.anaMinimized{
+	position: absolute;
+	width: 100%;
+	height: 80px;
+	background-color: #0070a6;
+	bottom: 0;
+	z-index: 99999;
+	cursor: pointer;
+}
+
+.anaMinimized:hover{
+	-webkit-box-shadow: -1px 1px 5px 3px rgba(0,0,0,0.22);
+	-moz-box-shadow: -1px 1px 5px 3px rgba(0,0,0,0.22);
+	box-shadow: -1px 1px 5px 3px rgba(0,0,0,0.22);
+	cursor: pointer;
+}
+
+.anaMinimized .ana{
+	width: 20%;
+	border: 5px solid #0070a6;
+	border-radius: 1000px;
+	position: absolute;
+	bottom: 20%;
+	left: 5%;
+}
+
+.helpAna{
+	float: left;
+	width: 70%;
+	top: 15px;
+	margin-left: 28%;
+	font-size: 17px;
+	color: #fff;
+	margin-top: 25px;
+}
+
+.nomeAna{
+	float: right;
+	width: 55%;
+	position: relative;
+	top: 25px;
+	left: 10%;
+	color: #babdbe;
+	display: none;
+}
+
+.nomeAna span{
+	color: #007eb9;
+	font-weight: bold;
+}
+
+#form{
+	display: none;
+}
+
+.iconsChatWindowControl{
+	position:absolute;
+	right: 10px;
+	height: 30px;
+	top: 50%;
+	margin-top: -10px;
+}
+
+.iconsChatWindowControl img{
+	width: 24px;
+	height: 24px;
+	margin-left: 5px;
+	cursor: pointer;
+}
+
+.inputShowed{
+	padding: 10px;
+	border: 2px solid #eceeef;
+	border-right: 0px;
+	outline: none;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  	background: #fff;
+  	font-size: 14px;
+  	float: right;
+  	width: 75%;
+  	color: #666;
+  	border-top-left-radius: 4px;
+  	border-bottom-left-radius: 4px;
+  	margin-top: -2px;
+  	margin-right: -1px;
+}
+
+.bottom_wrapper .send_message {
+  width: 70px;
+  height: 41px;
+  display: inline-block;
+  background-color: #0070a6;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  float: right;
+  border: 0px solid;
+  font-size: 14px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none; 
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px; 
+  margin-top: 0px;
+}
+.bottom_wrapper .send_message:hover {
+  background-color: #0b99de;
+}
+.bottom_wrapper .send_message .text {
+  display: inline-block;
+  line-height: 40px;
+}
+
+.anaBig{
+	height: 20%;
+	width: 100%;
+	background-color: #fff;
+	border-top: 1px #f2f3f4 solid;
+	position: relative;
+	margin-top: 1px;
+	-webkit-box-shadow: 0px 7px 5px -1px rgba(0,0,0,0.05);
+	-moz-box-shadow: 0px 7px 5px -1px rgba(0,0,0,0.05);
+	box-shadow: 0px 7px 5px -1px rgba(0,0,0,0.05);
+	border-bottom: 1px solid #ccc;
+	background: #ffffff; /* Old browsers */
+	background: -moz-linear-gradient(left,  #ffffff 63%, #f1f1f1 77%, #f1f1f1 90%, #e1e1e1 100%, #e1e1e1 100%, #f6f6f6 100%, #ffffff 101%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left,  #ffffff 63%,#f1f1f1 77%,#f1f1f1 90%,#e1e1e1 100%,#e1e1e1 100%,#f6f6f6 100%,#ffffff 101%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right,  #ffffff 63%,#f1f1f1 77%,#f1f1f1 90%,#e1e1e1 100%,#e1e1e1 100%,#f6f6f6 100%,#ffffff 101%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
+	
+}
+
+
+.anaBig img{
+	width: 18%;
+	position: absolute;
+	left: 50%;
+	margin-left: -9%;
+	bottom: 0;
+}
+
+.maxmobile{
+	float: right;
+	width: 30px;
+	margin-top: -25px;
+	margin-right: 10px;
+	width: 35px;
+	height: 35px;
+	background-color: #fff;
+	cursor: pointer;
+	border-radius: 18px;
+	color: #0070a6;
+	font-size: 25px;
+	font-weight: bold;
+	text-align: center;
+	line-height: 40px;
+}
+
+.iconsChatWindowDrag{
+	display: none;
+}
+
