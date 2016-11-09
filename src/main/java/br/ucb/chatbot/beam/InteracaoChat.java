@@ -8,28 +8,33 @@ package br.ucb.chatbot.beam;
  */
 public class InteracaoChat {
 
-	private boolean usuarioInteracao;
+	private Integer usuarioInteracao;
 	private String interacaoFala;
 	
-	public InteracaoChat(boolean usuarioInteracao, String interacaoFala){
+	public InteracaoChat(Integer usuarioInteracao, String interacaoFala){
 		setUsuarioInteracao(usuarioInteracao);
 		setInteracaoFala(interacaoFala);
 	}
 	
-	public boolean isUsuarioInteracao() {
-		return usuarioInteracao;
-	}
-	/**
-	 * usuarioInteracao, assumirar o valor true caso a interação tenha sido feita por um humano, caso contrario
-	 * será pelo chat
-	 * @param usuarioInteracao
-	 */
-	public void setUsuarioInteracao(boolean usuarioInteracao) {
-		this.usuarioInteracao = usuarioInteracao;
-	}
+	
+	
 	public String getInteracaoFala() {
 		return interacaoFala;
 	}
+	public Integer getUsuarioInteracao() {
+		return usuarioInteracao;
+	}
+
+	/**
+	 * usuarioInteracao, assumirar o valor 1 caso a interação tenha sido feita por um humano, caso contrario
+	 * será pelo chat
+	 * @param usuarioInteracao
+	 */
+	public void setUsuarioInteracao(Integer usuarioInteracao) {
+		this.usuarioInteracao = usuarioInteracao;
+	}
+
+
 	/**
 	 * intercao fala, será a mensagem de entrada do usuario ou de saída pelo bot
 	 * @param interacaoFala
@@ -40,7 +45,7 @@ public class InteracaoChat {
 	
 	@Override
 	public String toString() {
-		String quemFala = isUsuarioInteracao() ? " Usuario " : " Bot";
+		String quemFala = getUsuarioInteracao() == 1 ? " Usuario " : " Bot";
 		return quemFala+" "+getInteracaoFala();
 	}
 	

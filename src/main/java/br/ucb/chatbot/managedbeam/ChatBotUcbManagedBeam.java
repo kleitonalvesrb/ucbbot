@@ -25,7 +25,7 @@ public class ChatBotUcbManagedBeam {
 	private List<InteracaoChat> interacoes = new ArrayList<>();
 	
 	public ChatBotUcbManagedBeam(){
-		getInteracoes().add(new InteracaoChat(false, "Olá, eu sou uma Assistente virtual da UCB, em que posso lhe ajudar?"));
+		getInteracoes().add(new InteracaoChat(0, "Olá, eu sou uma Assistente virtual da UCB, em que posso lhe ajudar?"));
 	}
 	
 	public String getUserInput() {
@@ -65,9 +65,9 @@ public class ChatBotUcbManagedBeam {
 	public String submit(){
 		System.out.println("====submit======");
 
-		getInteracoes().add(new InteracaoChat(true, userInput));
+		getInteracoes().add(new InteracaoChat(1, userInput));
 		setBotOutput(new RealizaPerguntBot().realizaPergunta(userInput));
-		getInteracoes().add(new InteracaoChat(false, getBotOutput()));
+		getInteracoes().add(new InteracaoChat(0, getBotOutput()));
 		System.out.println("==============");
 		System.out.println(getInteracoes().toString());
 		return "";
